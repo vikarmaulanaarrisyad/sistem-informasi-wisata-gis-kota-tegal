@@ -39,23 +39,26 @@
                 </li>
                 @if (auth()->user()->hasRole('admin'))
                     <li class="nav-header">DATA MASTER</li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
+                    <li class="nav-item {{ request()->is(['category']) ? 'menu-is-opening menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->is(['category*']) ? 'active' : '' }}">
                             <i class="nav-icon fas fa-cube"></i>
                             <p>
                                 Master Data
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
+                        <ul class="nav nav-treeview"
+                            style="{{ request()->is(['category*']) ? 'display: block;' : 'display: none;' }}">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('category.index') }}"
+                                    class="nav-link {{ request()->is('category') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Kategori</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link {{ request()->is('jenis-barang*') ? 'active' : '' }}">
+                                <a href="#"
+                                    class="nav-link {{ request()->is('jenis-barang*') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Wisata</p>
                                 </a>
