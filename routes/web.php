@@ -28,6 +28,7 @@ Route::group([
         'middleware' => 'role:admin'
     ], function () {
         //
+        Route::get('/category/data', [CategoryController::class, 'data'])->name('category.data');
         Route::resource('category', CategoryController::class);
     });
 });
