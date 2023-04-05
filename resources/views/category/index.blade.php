@@ -164,7 +164,7 @@
             })
             swalWithBootstrapButtons.fire({
                 title: 'Apakah anda yakin?',
-                text: 'Anda akan menghapus satuan ' + name +
+                text: 'Anda akan menghapus ' + name +
                     ' !',
                 icon: 'warning',
                 showCancelButton: true,

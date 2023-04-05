@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -26,8 +27,13 @@ class CategoryController extends Controller
 
         return datatables($category)
             ->addIndexColumn()
-            ->addColumn('aksi', function () {
-                return '';
+            ->addColumn('aksi', function ($category) {
+                return '
+                <div class="btn-group">
+                    <button onclick="editForm(`' . route('category.show', $category->id) . '`)" class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt"></i> Edit</button>
+                    <button onclick="deleteData(`' . route('category.destroy', $category->id) . '`, `' . $category->name  . '`)" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                </div>
+                ';
             })
             ->escapeColumns([])
             ->make(true);
@@ -81,7 +87,7 @@ class CategoryController extends Controller
         $category->image = upload('category', $fileImage, 'category');
         $category->save();
 
-        return response()->json(['data' => $category, 'message' => 'Data berhasil disimpan.']);
+        return response()->json(['data' => $category, 'message' => 'Data ' . $category->name . ' berhasil tersimpan.']);
     }
 
     /**
@@ -89,7 +95,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return response()->json(['data' => $category]);
     }
 
     /**
@@ -105,7 +111,43 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
+                'name' => 'required'
+            ],
+            [
+                'image.required' => 'Gambar wajib diisi.',
+                'image.mimes' => 'Gambar harus bertipe jpg, jpeg, png.',
+                'image.max' => 'Gambar tidak boleh melebihi 2 MB.',
+                'name.required' => 'Nama kategori wajib disi.'
+            ]
+        );
+
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors(), 'message' => 'Tidak dapat menyimpan data.'], 422);
+        }
+
+        $data = $request->except('image');
+
+        $data = [
+            'name' => $request->name,
+            'slug' => Str::slug($request->name)
+        ];
+
+        if ($request->hasFile('image')) {
+            if (Storage::disk('public')->exists($category->image)) {
+                Storage::disk('public')->delete($category->image);
+            }
+
+            $data['image'] = upload('category', $request->file('image'), 'category');
+        }
+
+        $category->update($data);
+
+        return response()->json(['data' => $data, 'message' => 'Data ' . $request->name . ' berhasil tersimpan.']);
     }
 
     /**
@@ -113,6 +155,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        if (Storage::disk('public')->exists($category->image)) {
+            Storage::disk('public')->delete($category->image);
+        }
+
+        return response()->json(['message' => 'Data ' . $category->name . ' berhasil dihapus.']);
     }
 }
