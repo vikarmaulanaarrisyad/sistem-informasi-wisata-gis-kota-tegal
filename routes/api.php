@@ -21,4 +21,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/categories', [CategoryApiController::class, 'index']);
-Route::get('/place/{id}', [PlaceApiController::class, 'getPlaceByCategory']);
+Route::get('/place/category/{id}', [PlaceApiController::class, 'getPlaceByCategory']);
