@@ -10,7 +10,7 @@ if (!function_exists('upload')) {
 
         Storage::disk('public')->putFileAs("/$directory", $file, $filename);
 
-        return "/$directory/$filename";
+        return "$directory/$filename";
     }
 }
 

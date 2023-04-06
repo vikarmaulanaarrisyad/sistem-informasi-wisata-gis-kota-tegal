@@ -39,7 +39,7 @@
                 </li>
                 @if (auth()->user()->hasRole('admin'))
                     <li class="nav-header">DATA MASTER</li>
-                    <li class="nav-item {{ request()->is(['category']) ? 'menu-is-opening menu-open' : '' }}">
+                    <li class="nav-item {{ request()->is(['category', 'place']) ? 'menu-is-opening menu-open' : '' }}">
                         <a href="#" class="nav-link {{ request()->is(['category*']) ? 'active' : '' }}">
                             <i class="nav-icon fas fa-cube"></i>
                             <p>
@@ -48,7 +48,7 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview"
-                            style="{{ request()->is(['category*']) ? 'display: block;' : 'display: none;' }}">
+                            style="{{ request()->is(['category*', 'place*']) ? 'display: block;' : 'display: none;' }}">
                             <li class="nav-item">
                                 <a href="{{ route('category.index') }}"
                                     class="nav-link {{ request()->is('category') ? 'active' : '' }}">
@@ -57,8 +57,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"
-                                    class="nav-link {{ request()->is('jenis-barang*') ? 'active' : '' }}">
+                                <a href="{{ route('place.index') }}"
+                                    class="nav-link {{ request()->is('place*') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Wisata</p>
                                 </a>

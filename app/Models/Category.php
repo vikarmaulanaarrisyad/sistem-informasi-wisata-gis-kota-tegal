@@ -10,8 +10,8 @@ class Category extends Model
 
     protected $table = 'categories';
 
-    // public function place()
-    // {
-    //     return $this->hasMany()
-    // }
+    public function place()
+    {
+        return $this->hasMany(Place::class);
+    }
 }
