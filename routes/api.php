@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\CategoryApiController;
+use App\Http\Controllers\API\PlaceApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/categories', [CategoryApiController::class, 'index']);
+Route::get('/place/{id}', [PlaceApiController::class, 'getPlaceByCategory']);
