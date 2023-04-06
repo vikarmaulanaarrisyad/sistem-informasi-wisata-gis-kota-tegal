@@ -57,7 +57,7 @@ class PlaceController extends Controller
             'categories' => 'required',
             'description' => 'required',
             'location' => 'required',
-            'image' => 'required|mimes:jpg, jpeg, png|max:2048',
+            'image' => 'required|mimes:jpg,jpeg,png|max:2048|min:100',
         ]);
 
         if ($validator->fails()) {
