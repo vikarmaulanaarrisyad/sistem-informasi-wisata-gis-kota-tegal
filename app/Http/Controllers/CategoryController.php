@@ -27,6 +27,9 @@ class CategoryController extends Controller
 
         return datatables($category)
             ->addIndexColumn()
+            ->editColumn('image', function ($category) {
+                return '<img src="' . Storage::url($category->image) . '" class="img-circle" width="80" height="50">';
+            })
             ->addColumn('aksi', function ($category) {
                 return '
                 <div class="btn-group">
