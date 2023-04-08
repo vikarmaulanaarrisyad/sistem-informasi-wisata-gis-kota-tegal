@@ -33,7 +33,8 @@ Route::group([
         Route::resource('category', CategoryController::class)->except('edit', 'create');
 
         // route places
-        Route::get('/places/data', [PlaceController::class, 'data'])->name('place.data');
+        Route::get('/place/data', [PlaceController::class, 'data'])->name('place.data');
         Route::resource('place', PlaceController::class)->except('edit', 'create');
+        Route::get('/place/{id}/detail', [PlaceController::class, 'detail'])->name('place.detail');
     });
 });

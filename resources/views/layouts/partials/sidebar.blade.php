@@ -40,7 +40,7 @@
                 @if (auth()->user()->hasRole('admin'))
                     <li class="nav-header">DATA MASTER</li>
                     <li class="nav-item {{ request()->is(['category', 'place']) ? 'menu-is-opening menu-open' : '' }}">
-                        <a href="#" class="nav-link {{ request()->is(['category*']) ? 'active' : '' }}">
+                        <a href="#" class="nav-link {{ request()->is(['category*', 'place*']) ? 'active' : '' }}">
                             <i class="nav-icon fas fa-cube"></i>
                             <p>
                                 Master Data

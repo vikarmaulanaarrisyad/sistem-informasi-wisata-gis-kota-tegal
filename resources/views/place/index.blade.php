@@ -19,9 +19,9 @@
                 <x-table>
                     <x-slot name="thead">
                         <th>No</th>
-                        <th>Gambar</th>
                         <th>Nama</th>
                         <th>Kategori</th>
+                        <th>Kecamatan</th>
                         <th>Aksi</th>
                     </x-slot>
                 </x-table>
@@ -65,15 +65,13 @@
                     sortable: false
                 },
                 {
-                    data: 'image',
-                    searchable: false,
-                    sortable: false
-                },
-                {
                     data: 'name'
                 },
                 {
                     data: 'category'
+                },
+                {
+                    data: 'district'
                 },
                 {
                     data: 'aksi',
