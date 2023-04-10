@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Storage;
 
 class PlaceApiController extends Controller
 {
+    public function index()
+    {
+        $result = Place::all();
+
+        return response()->json(['result' => $result]);
+    }
+
     public function getPlaceByCategory(Request $request, $id)
     {
         $place = Place::where('category_id', $id)->get();
