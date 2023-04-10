@@ -42,14 +42,14 @@
     <div class="row">
         <div class="col-md-12 col-lg-12 col-12">
             <label for="description">Deskripsi</label>
-            <textarea name="description" id="description" cols="30" rows="10" class="summernote"></textarea>
+            <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12 col-lg-12 col-12">
             <label for="address">Alamat</label>
-            <textarea name="address" id="address" cols="30" rows="10" class="summernote"></textarea>
+            <textarea name="address" id="address" cols="30" rows="10" class="form-control"></textarea>
         </div>
     </div>
 

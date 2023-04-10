@@ -65,14 +65,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-map-marker"></i>
-                            <p>
-                                Maps
-                            </p>
-                        </a>
-                    </li>
                     <li class="nav-header">SISTEM</li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">

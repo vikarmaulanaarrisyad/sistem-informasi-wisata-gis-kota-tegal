@@ -65,7 +65,7 @@ class PlaceController extends Controller
             'categories' => 'required',
             'description' => 'required',
             'location' => 'required',
-            'image' => 'required|mimes:jpg,jpeg,png|max:2048|min:100',
+            'image' => 'required|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -131,7 +131,7 @@ class PlaceController extends Controller
             'categories' => 'required',
             'description' => 'required',
             'location' => 'required',
-            'image' => 'nullable|mimes:jpg,jpeg,png|max:2048|min:100',
+            'image' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($validator->fails()) {
