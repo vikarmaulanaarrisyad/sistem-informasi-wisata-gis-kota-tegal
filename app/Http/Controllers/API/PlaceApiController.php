@@ -13,7 +13,7 @@ class PlaceApiController extends Controller
     {
         $result = Place::all();
 
-        return response()->json(['result' => $result]);
+        return response()->json($result);
     }
 
     public function getPlaceByCategory(Request $request, $id)

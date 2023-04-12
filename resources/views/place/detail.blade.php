@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <x-card>
                 <table class="table table-bordered-0">
                     <tr>
