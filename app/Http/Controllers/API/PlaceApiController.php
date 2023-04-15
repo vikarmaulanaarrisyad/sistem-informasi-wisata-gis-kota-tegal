@@ -12,7 +12,10 @@ class PlaceApiController extends Controller
     public function index()
     {
         $result = Place::all();
-
+        foreach ($result as $key => $value) {
+            # code...
+            $value->image = Storage::url($value->image);
+        }
         return response()->json($result);
     }
 
