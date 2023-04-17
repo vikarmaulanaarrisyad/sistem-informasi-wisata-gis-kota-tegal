@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,5 +37,7 @@ Route::group([
         Route::get('/place/data', [PlaceController::class, 'data'])->name('place.data');
         Route::resource('place', PlaceController::class)->except('edit', 'create');
         Route::get('/place/{id}/detail', [PlaceController::class, 'detail'])->name('place.detail');
+
+        Route::resource('setting', SettingController::class);
     });
 });

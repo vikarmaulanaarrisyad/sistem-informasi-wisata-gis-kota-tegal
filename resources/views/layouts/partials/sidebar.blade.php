@@ -4,7 +4,6 @@
         <img src="{{ asset('AdminLTE/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3 bg-light" style="opacity: .8">
         <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
-        {{-- <span class="brand-text font-weight-light">{{ $setting->company_name }}</span> --}}
     </a>
 
     <!-- Sidebar -->
@@ -16,10 +15,9 @@
                     class="img-circle elevation-2">
             </div>
             <div class="info">
-                <a href="{{ route('profile.show') }}" class="d-block" data-toggle="tooltip" data-placement="top"
-                    title="Edit Profil">
+                <a href="{{ route('profile.show') }}" class="d-block"
+                    >
                     {{ auth()->user()->name }}
-                    <i class="fas fa-pencil-alt ml-2 text-sm text-primary"></i>
                 </a>
             </div>
         </div>
@@ -64,15 +62,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-header">SISTEM</li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-cogs"></i>
-                            <p>
-                                Pengaturan
-                            </p>
-                        </a>
                     </li>
                 @endif
             </ul>
