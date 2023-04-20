@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\CategoryApiController;
 use App\Http\Controllers\API\PlaceApiController;
+use App\Http\Controllers\Api\SettingApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/categories', [CategoryApiController::class, 'index']);
 Route::get('/place', [PlaceApiController::class, 'index']);
 Route::get('/place/category/{id}', [PlaceApiController::class, 'getPlaceByCategory']);
+Route::get('setting', [SettingApiController::class, 'index']);

@@ -13,8 +13,7 @@
                     class="img-circle elevation-2">
             </div>
             <div class="info">
-                <a href="{{ route('profile.show') }}" class="d-block"
-                    >
+                <a href="{{ route('profile.show') }}" class="d-block">
                     {{ auth()->user()->name }}
                 </a>
             </div>
@@ -62,6 +61,15 @@
                         </ul>
                     </li>
                 @endif
+                <li class="nav-item">
+                    <a href="{{ route('setting.index') }}"
+                        class="nav-link {{ request()->is('setting*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>
+                            Tentang
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

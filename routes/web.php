@@ -38,6 +38,7 @@ Route::group([
         Route::resource('place', PlaceController::class)->except('edit', 'create');
         Route::get('/place/{id}/detail', [PlaceController::class, 'detail'])->name('place.detail');
 
+        Route::get('setting/data',[SettingController::class, 'data'])->name('setting.data');
         Route::resource('setting', SettingController::class);
     });
 });
